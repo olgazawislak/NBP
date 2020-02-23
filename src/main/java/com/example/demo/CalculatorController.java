@@ -17,7 +17,7 @@ class CalculatorController {
 
     @GetMapping("calculator")
     Average calculateAverage(){
-        return new Average(numbers);
+        return Average.createAverage(numbers);
     }
 
     @GetMapping("numbers")

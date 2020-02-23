@@ -29,6 +29,9 @@ dependencies {
 	testCompile group: 'org.mockito', name: 'mockito-core', version: '3.2.4'
 	compile 'org.springframework.boot:spring-boot-starter-data-mongodb:2.2.2.RELEASE'
 	compile group: 'de.flapdoodle.embed', name: 'de.flapdoodle.embed.mongo', version: '2.2.0'
+	compile group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2'
+	compile group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+
 }
 
 test {
