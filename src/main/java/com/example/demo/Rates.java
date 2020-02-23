@@ -1,22 +1,18 @@
 package com.example.demo;
 
-class Rates {
-    private double bid;
-    private double ask;
+import lombok.Getter;
 
-    public Rates(double bid, double ask) {
+import java.math.BigDecimal;
+@Getter
+class Rates {
+    private BigDecimal bid;
+    private BigDecimal ask;
+
+    public Rates(BigDecimal bid, BigDecimal ask) {
         this.bid = bid;
         this.ask = ask;
     }
 
     public Rates() {
-    }
-
-    public double getBid() {
-        return bid;
-    }
-
-    public double getAsk() {
-        return ask;
     }
 }

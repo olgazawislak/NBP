@@ -3,6 +3,7 @@ package com.example.demo;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -27,7 +28,7 @@ class ExchangeRate {
         return currency;
     }
 
-    Double getAverageOfBidAsk(){
-        return (rates.get(0).getBid()+rates.get(0).getAsk())/2;
+    BigDecimal getAverageOfBidAsk(){
+        return (rates.get(0).getBid().add(rates.get(0).getAsk())).divide(new BigDecimal(2));
     }
 }

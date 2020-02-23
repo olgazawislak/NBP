@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 
 @RestController
@@ -45,11 +47,12 @@ class NbpController {
         exchangeRateRepository.save(exchangeRate);
         return exchangeRate;
     }
-
-    double calculateAverage(){
+    @GetMapping("average")
+    BigDecimal calculateAverage(){
         List<ExchangeRate> exchangeRates = exchangeRateRepository.findAll();
         return exchangeRates.stream()
-                .mapToDouble(ExchangeRate::getAverageOfBidAsk)
-                .average().getAsDouble();
+                .map(ExchangeRate::getAverageOfBidAsk)
+                .reduce(BigDecimal.ZERO, BigDecimal::add)
+                .divide(new BigDecimal(exchangeRates.size()), RoundingMode.DOWN);
     }
 }
